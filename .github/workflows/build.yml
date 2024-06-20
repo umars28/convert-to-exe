@@ -16,12 +16,12 @@ jobs:
     - name: Set up Python 3.11.9 and Install Dependencies
       run: |
         python -m venv venv
-        . venv/bin/activate
+        .\venv\Scripts\activate  # Aktivasi virtual environment di PowerShell Windows
         pip install --upgrade pip
         pip install pyinstaller
         pip install webview
         pyinstaller --onefile --hidden-import=webview --hidden-import=webview.platforms.win --noconsole app.py
-        cp -r ~/.pyenv/versions/3.11.9/lib/python3.11/site-packages/webview/browser/static dist/
+        cp -r $env:USERPROFILE\.pyenv\versions\3.11.9\lib\site-packages\webview\browser\static dist\  # Menggunakan $env:USERPROFILE untuk path home di PowerShell Windows
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
