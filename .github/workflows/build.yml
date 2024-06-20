@@ -16,19 +16,20 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.12.3  # Ganti dengan versi Python yang Anda gunakan
+        python-version: 3.11.9
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pyinstaller
+        pip install webview
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --hidden-import=webview --noconsole app.py
+        pyinstaller --onefile --hidden-import=webview --hidden-import=webview.platforms.win --noconsole app.py
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: app-exe
-        path: dist/app.exe  # Sesuaikan dengan lokasi file executable yang dihasilkan
+        path: dist/app.exe
