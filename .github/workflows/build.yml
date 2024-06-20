@@ -13,16 +13,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Python 3.11.9 and Install Dependencies
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11.9  # Ganti dengan versi Python yang Anda gunakan
+
+    - name: Install dependencies
       run: |
-        python -m venv venv
-        .\venv\Scripts\activate
-        .\venv\Scripts\python -m pip install --upgrade pip
-        .\venv\Scripts\pip install pyinstaller
-        .\venv\Scripts\pip install pywebview
-        .\venv\Scripts\pyinstaller --onefile --hidden-import=webview --hidden-import=webview.platforms.win --noconsole app.py
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+        pip install pywebview
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --hidden-import=webview --noconsole app.py
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: app-exe
-        path: dist/app.exe
+        path: dist/app.exe  # Sesuaikan dengan lokasi file executable yang dihasilkan
