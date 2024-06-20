@@ -20,8 +20,8 @@ jobs:
         .\venv\Scripts\python -m pip install --upgrade pip
         .\venv\Scripts\pip install pyinstaller
         .\venv\Scripts\pip install pywebview
-        .\venv\Scripts\pyinstaller --onefile --hidden-import=webview --hidden-import=webview.platforms.win --noconsole app.py
-        cp -r .\venv\Lib\site-packages\webview\browser\static dist\
+        pyinstaller --onefile --hidden-import=webview --noconsole app.py
+
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
