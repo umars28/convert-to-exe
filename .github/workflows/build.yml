@@ -25,9 +25,9 @@ jobs:
         pip install pywebview
     - name: Build executable
       run: |
-        pyinstaller --onefile --hidden-import=webview --noconsole app.py
+        pyinstaller --onefile --icon=icon.ico --hidden-import=webview --noconsole --name Kasir app.py
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: app-exe
-        path: dist/app.exe  # Sesuaikan dengan lokasi file executable yang dihasilkan
+        path: dist/Kasir.exe  # Sesuaikan dengan lokasi file executable yang dihasilkan
