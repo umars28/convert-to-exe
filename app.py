@@ -1,4 +1,5 @@
 import webview
+from screeninfo import get_monitors
 
 def on_loaded(window):
     current_url = window.get_current_url()
@@ -11,8 +12,13 @@ def on_loaded(window):
         window.load_url(new_url)
 
 def main():
-    # Create a webview window with the specified URL
-    window = webview.create_window('Kasir', 'https://staging.garamqu.id/cashier/login', fullscreen=True)
+    # Get the screen size of the primary monitor
+    monitor = get_monitors()[0]
+    screen_width = monitor.width
+    screen_height = monitor.height
+
+    # Create a webview window with the calculated size
+    window = webview.create_window('Kasir', 'https://staging.garamqu.id/cashier/login', width=screen_width, height=screen_height, resizable=True)
     
     # Add a hook to the window to handle URL changes
     window.events.loaded += on_loaded
