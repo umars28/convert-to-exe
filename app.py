@@ -18,7 +18,7 @@ def main():
     screen_height = monitor.height
 
     # Create a webview window with the calculated size
-    window = webview.create_window('Kasir', 'https://staging.garamqu.id/cashier/login', width=screen_width, height=screen_height, resizable=True)
+    window = webview.create_window('Kasir', 'https://staging.garamqu.id/cashier/login', width=screen_width, height=screen_height, x=0, y=0, resizable=True)
     
     # Add a hook to the window to handle URL changes
     window.events.loaded += on_loaded
