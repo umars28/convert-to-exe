@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.11.9  # Ganti dengan versi Python yang Anda gunakan
+        python-version: 3.11.9
 
     - name: Install dependencies
       run: |
@@ -33,4 +33,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: app-exe
-        path: dist/Kasir.exe  # Sesuaikan dengan lokasi file executable yang dihasilkan
+        path: dist/Kasir.exe
